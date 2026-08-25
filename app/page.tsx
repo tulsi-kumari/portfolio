@@ -1,25 +1,42 @@
 import { getAllPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
+import HighlightGrid from "@/components/HighlightGrid";
 
 export default function HomePage() {
   const posts = getAllPosts();
 
   return (
-    <div className="max-w-2xl mx-auto px-6">
-      <p className="text-base text-ink/80 leading-relaxed mb-10 max-w-xl">
-        I write about backend systems, transaction correctness, performance
-        problems I've actually hit, and things I'm teaching myself along the
-        way &mdash; currently distributed systems, one Raft implementation
-        at a time.
-      </p>
+    <div className="max-w-3xl mx-auto px-6 py-2">
+      {/* Intro Hero */}
+      <div className="mb-10">
+        <p className="text-base sm:text-lg text-ink/85 leading-relaxed max-w-2xl font-normal">
+          I'm a Backend Software Engineer at <span className="font-semibold text-ink">Texas Instruments</span> focusing on{" "}
+          <span className="font-medium text-ink">transaction correctness</span>,{" "}
+          <span className="font-medium text-ink">database &amp; ORM performance engineering</span>, and{" "}
+          <span className="font-medium text-ink">distributed systems</span>.
+        </p>
+      </div>
 
+      {/* Systems & Impact Visual Cards */}
+      <HighlightGrid />
+
+      {/* Articles Feed */}
       <div>
+        <div className="flex items-center justify-between gap-2 mb-5 pb-2 border-b border-line">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-muted">
+            Technical Writing &amp; Investigations
+          </h2>
+          <span className="text-xs text-muted font-mono">{posts.length} articles</span>
+        </div>
+
         {posts.length === 0 && (
-          <p className="text-sm text-muted">No posts yet &mdash; check back soon.</p>
+          <p className="text-sm text-muted py-8 text-center">No posts yet &mdash; check back soon.</p>
         )}
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
+        <div className="space-y-4">
+          {posts.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
+        </div>
       </div>
     </div>
   );

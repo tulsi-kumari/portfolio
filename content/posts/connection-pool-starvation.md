@@ -18,6 +18,18 @@ The first real clue was in the connection pool metrics: active connections pinne
 
 Working backward from there, the pattern was: a `@Transactional` method that, partway through, made a call out to an external service over the wire. The transaction was still open — and holding its database connection — for the entire duration of that external call. Under normal latency, this is invisible. Under any slowdown on the external side (which is exactly what happened), every one of those in-flight requests sat there holding a connection hostage, and the pool ran out of connections for anyone else.
 
+```text
+[ BEFORE: Connection Starvation under External Latency ]
+Request Thread ──► [ @Transactional begins ] ──► [ DB Connection checked out from HikariCP ]
+                                                        │
+                                                        ▼
+                                       [ External API / Denodo Call (60s+ slowdown) ]
+                                       ▲ Connection held IDLE & hostage during I/O
+                                                        │
+                                                        ▼
+                                       [ Fast 2ms DB Save ] ──► [ Release Connection ]
+```
+
 ## Why this is easy to write and easy to miss
 
 The code reads perfectly reasonably in isolation:
@@ -35,6 +47,17 @@ Nothing here looks wrong. The bug isn't in any single line — it's in the *scop
 ## The fix
 
 Separate the three concerns explicitly instead of letting one annotation cover all of them:
+
+```text
+[ AFTER: Isolated Transaction Boundary ]
+Request Thread ──► [ External API / Denodo Call (No DB connection checked out) ]
+                               │
+                               ▼
+                   [ @Transactional saveEnriched() ]
+                               │
+                               ▼ (Connection checked out for ~2ms ONLY)
+                   [ Fast DB Save ] ──► [ Immediate Release back to Pool ]
+```
 
 ```java
 public void processRecord(Record r) {

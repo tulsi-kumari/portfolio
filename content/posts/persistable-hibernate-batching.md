@@ -18,7 +18,19 @@ Hibernate needs to decide, for every entity you hand to `save()` or `saveAll()`,
 
 For an `@EmbeddedId`, the ID is always populated — you set it yourself before the entity ever touches Hibernate. So Hibernate can't tell new from existing just by looking at the ID. Its default fallback is to ask the database: issue a `SELECT` to check whether a row with that key already exists, then decide between `INSERT` and `UPDATE` based on the answer.
 
-That means every entity in a batch save was costing a round-trip `SELECT` before it could even attempt the write it actually needed. Multiply that by a few thousand rows and the "batch" insert wasn't really batching anything — it was thousands of individual read-then-write round trips.
+```text
+[ Default Hibernate Behavior with @EmbeddedId: Linear N+1 Tax ]
+saveAll([5,000 entities])
+  ├── Entity 1 ──► SELECT ... WHERE id=1 ──► INSERT INTO ... (Round-trip 1)
+  ├── Entity 2 ──► SELECT ... WHERE id=2 ──► INSERT INTO ... (Round-trip 2)
+  └── ... (5,000 individual SELECT queries before each write. Total time: ~7 min)
+
+[ Optimized with Persistable<T>: True JDBC Batching ]
+saveAll([5,000 entities])
+  ├── isNew() returns true (0 SELECT queries issued)
+  └── Single Batched JDBC Call:
+      INSERT INTO records VALUES (...), (...), (...), ... (Total time: < 1 sec)
+```
 
 ## The fix: `Persistable<T>`
 

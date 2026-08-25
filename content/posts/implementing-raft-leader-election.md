@@ -14,9 +14,34 @@ Reading gives you the shape of an idea. Implementing forces you to answer the qu
 
 ## Where I am
 
+```text
+               ┌──────────────────────────────────────────────┐
+               │                                              │
+               ▼                                              │
+         ┌───────────┐    Election Timeout     ┌───────────┐  │ Split Vote /
+Starts ─►│ Follower  │ ──────────────────────► │ Candidate │ ─┘ Timeout
+         └───────────┘                         └───────────┘
+               ▲                                     │
+               │        Discovers new Leader /       │ Majority
+               │        higher Term                  ▼ Votes
+               └────────────────────────────── ┌───────────┐
+                                               │  Leader   │
+                                               └───────────┘
+```
+
 Currently working: a set of nodes that start as followers, time out in the absence of a heartbeat, promote themselves to candidates, request votes from their peers, and correctly settle on a single leader per term — including handling the case where an election is split and has to restart with a new, randomized timeout.
 
 The part I underestimated: how much of the correctness lives in the *randomization* of the election timeout, not the voting logic itself. Without enough randomness in the timeout range, multiple nodes reliably time out together and split the vote every single round, and you get an infinite loop of failed elections that all look individually correct. Fixing that wasn't a logic bug fix — it was a "read the paper's actual numbers more carefully" fix.
+
+```text
+[ Fixed Timeout (e.g. 150ms) -> Split Vote Lock ]
+Node A: ──── Timeout (150ms) ──► Candidate (Votes for self) ──┐ (Split Vote)
+Node B: ──── Timeout (150ms) ──► Candidate (Votes for self) ──┴──► New Election loop!
+
+[ Randomized Timeout (e.g. 150ms - 300ms) -> Deterministic Leader ]
+Node A: ──── Timeout (162ms) ──► Candidate ──► RequestVote RPC ──► Wins majority & sends Heartbeats!
+Node B: ──── (Timer reset by Node A Heartbeat before timing out) ──► Remains Follower
+```
 
 ## What's next
 
