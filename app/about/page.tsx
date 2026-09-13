@@ -1,7 +1,7 @@
 export default function AboutPage() {
   return (
     <div className="max-w-2xl mx-auto px-6">
-      <h1 className="text-2xl font-bold tracking-tight mb-6">About</h1>
+      <h1 className="text-3xl font-bold tracking-tight mb-6 font-serif">About</h1>
 
       <div className="prose-post text-ink/90">
         <p>

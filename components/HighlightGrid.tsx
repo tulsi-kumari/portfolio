@@ -5,56 +5,54 @@ export default function HighlightGrid() {
       title: "ORM & Batching Latency Cut",
       context: "Reduced 45+ min workflows to ~2 min at Texas Instruments via JDBC batching, Persistable<T>, and correlated SQL updates.",
       tag: "Performance",
-      color: "text-blue-600 bg-blue-50 border-blue-200",
     },
     {
-      metric: "10k+",
+      metric: "10K+",
       title: "11-State Modular Monolith",
-      context: "Architected queue-less lifecycle orchestrator automating sales workflows across 10k+ participants, saving ~$120K/yr.",
-      tag: "Architecture",
-      color: "text-emerald-700 bg-emerald-50 border-emerald-200",
+      context: "Architected queue-less lifecycle orchestrator automating sales workflows across 10,000+ participants, saving ~$120K/yr.",
+      tag: "Production / Architecture",
     },
     {
       metric: "Raft",
       title: "Distributed Consensus in Go",
-      context: "From-scratch implementation of Raft consensus protocol: randomized leader election, heartbeat timing, and state replication.",
+      context: "From-scratch Raft implementation in Go, currently focused on leader election, randomized election timeouts, heartbeats, and the path toward log replication.",
       tag: "Distributed Systems",
-      color: "text-amber-700 bg-amber-50 border-amber-200",
     },
     {
       metric: "~30s",
       title: "Metadata Knowledge Graph",
-      context: "Indexed 65,000+ enterprise objects with PostgreSQL GIN reverse search, slashing dependency analysis from 3 months.",
+      context: "Indexed 16,000+ artifacts and 30,000+ dependency edges with PostgreSQL GIN reverse search, slashing dependency analysis from months to seconds.",
       tag: "Graph & DB",
-      color: "text-purple-700 bg-purple-50 border-purple-200",
     },
   ];
 
   return (
-    <div className="mb-12">
-      <div className="flex items-center justify-between gap-2 mb-4">
+    <div className="mb-14">
+      <div className="flex items-center justify-between gap-2 mb-6 pb-2 border-b border-line">
         <h2 className="text-xs font-bold uppercase tracking-wider text-muted">
-          Key Systems &amp; Impact
+          Selected Work & Impact
         </h2>
-        <span className="text-xs text-muted/60 font-mono">production &amp; self-study</span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        {highlights.map((h) => (
+      <div className="flex flex-col">
+        {highlights.map((h, i) => (
           <div
             key={h.title}
-            className="p-4 rounded-xl border border-line bg-ink/[0.015] hover:bg-ink/[0.035] hover:border-ink/20 transition-all"
+            className={`py-5 ${i !== highlights.length - 1 ? "border-b border-line" : ""}`}
           >
-            <div className="flex items-center justify-between gap-2 mb-2">
-              <span className="text-lg font-extrabold tracking-tight text-ink font-mono">
+            <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-2">
+              <span className="text-lg font-bold tracking-tight text-ink font-mono shrink-0 sm:w-20">
                 {h.metric}
               </span>
-              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${h.color}`}>
-                {h.tag}
-              </span>
+              <div className="flex items-center gap-3">
+                <h3 className="text-base font-semibold text-ink">{h.title}</h3>
+                <span className="hidden sm:inline-block text-muted/50">&middot;</span>
+                <span className="text-xs font-medium text-muted">{h.tag}</span>
+              </div>
             </div>
-            <h3 className="text-xs font-bold text-ink mb-1">{h.title}</h3>
-            <p className="text-xs text-ink/70 leading-relaxed">{h.context}</p>
+            <p className="text-[15px] text-ink/85 leading-relaxed sm:ml-[6rem]">
+              {h.context}
+            </p>
           </div>
         ))}
       </div>

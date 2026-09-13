@@ -38,6 +38,26 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+      {/* Currently Building */}
+      <div className="mt-16 pt-10 border-t border-line">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-muted mb-8">
+          Currently Building &amp; Exploring
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+          <div>
+            <h3 className="text-[15px] font-bold text-ink mb-2">Raft in Go</h3>
+            <p className="text-[15px] text-ink/80 leading-relaxed">
+              Leader election &rarr; log replication &rarr; persistence
+            </p>
+          </div>
+          <div>
+            <h3 className="text-[15px] font-bold text-ink mb-2">Distributed Systems</h3>
+            <p className="text-[15px] text-ink/80 leading-relaxed">
+              Consistency, Sharding, MapReduce
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

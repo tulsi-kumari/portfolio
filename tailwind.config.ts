@@ -8,15 +8,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#111417",
-        paper: "#FBFAF8",
-        muted: "#6B7280",
-        accent: "#2563EB",
-        line: "#E5E3DE",
+        ink: "#20201E",
+        paper: "#F7F6F2",
+        canvas: "#F0F2EB",
+        muted: "#686762",
+        accent: "#3F6B57",
+        line: "#E1E5DE",
       },
       fontFamily: {
-        sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Inter", "sans-serif"],
-        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+        sans: ["var(--font-ibm-plex-sans)", "sans-serif"],
+        serif: ["var(--font-source-serif)", "serif"],
+        mono: ["var(--font-ibm-plex-mono)", "monospace"],
       },
       typography: {
         DEFAULT: {

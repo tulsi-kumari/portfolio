@@ -61,14 +61,14 @@ export default function PostPage({ params }: { params: { slug: string } }) {
         </Link>
       </div>
 
-      <div className="flex items-center gap-2 mb-3 flex-wrap">
-        <time className="text-xs text-muted">{formatDate(post.date)}</time>
-        <span className="text-xs text-muted/60">&middot;</span>
-        <span className="text-xs text-muted">{post.readingTime}</span>
+      <div className="flex items-center gap-2 mb-3 flex-wrap font-mono text-[11px] uppercase tracking-wider text-muted font-medium">
+        <time>{formatDate(post.date)}</time>
+        <span className="text-line">&middot;</span>
+        <span>{post.readingTime}</span>
         <StatusTag status={post.status} />
       </div>
 
-      <h1 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight mb-3">
+      <h1 className="text-[28px] sm:text-[36px] font-bold tracking-tight leading-[1.2] mb-5 text-ink font-serif">
         {post.title}
       </h1>
 
