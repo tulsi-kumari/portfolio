@@ -2,7 +2,7 @@ import { getAllPosts, getPostBySlug } from "@/lib/posts";
 
 export async function GET() {
   const posts = getAllPosts();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tulsikumari.dev";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tulsi-dev.vercel.app";
 
   const itemsXml = posts
     .map((post) => {

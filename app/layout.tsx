@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tulsikumari.dev";
-
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tulsi-dev.vercel.app";
 export const metadata: Metadata = {
   title: {
     default: "Tulsi Kumari — Backend Software Engineer",
@@ -47,10 +46,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans antialiased">
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row min-h-screen">
+          <Sidebar />
+          <div className="flex-1 min-w-0 flex flex-col md:border-l border-line md:min-h-screen">
+            <main className="flex-1 pt-6 md:pt-12 pb-12 w-full">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </div>
       </body>
     </html>

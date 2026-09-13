@@ -1,11 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AuthorCard() {
   return (
     <div className="mt-14 pt-8 border-t border-line">
       <div className="p-6 rounded-xl bg-ink/[0.02] border border-line flex flex-col sm:flex-row items-start sm:items-center gap-5">
-        <div className="w-14 h-14 rounded-full bg-ink text-paper flex items-center justify-center text-lg font-semibold shrink-0">
-          TK
+        <div className="w-14 h-14 rounded-full shrink-0 relative overflow-hidden ring-1 ring-line bg-line">
+          <Image src="/profile.jpg" alt="Tulsi Kumari" fill className="object-cover" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">

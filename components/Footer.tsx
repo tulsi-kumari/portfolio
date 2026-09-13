@@ -1,7 +1,7 @@
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="max-w-2xl mx-auto px-6 py-14 mt-10 border-t border-line">
+    <footer className="max-w-3xl mx-auto px-6 py-14 mt-10 border-t border-line">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted">
         <p>
           &copy; {year} Tulsi Kumari &middot; Backend Software Engineer
