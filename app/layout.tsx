@@ -25,7 +25,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tulsi-dev.vercel.app";
 export const metadata: Metadata = {
   title: {
-    default: "Tulsi Kumari — Backend Software Engineer",
+    default: "Tulsi Kumari | Software Development Engineer",
     template: "%s | Tulsi Kumari",
   },
   description:
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Tulsi Kumari — Backend Software Engineer",
+    title: "Tulsi Kumari | Software Development Engineer",
     description:
       "Notes on backend engineering, transaction correctness, database performance, and distributed systems.",
     url: siteUrl,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tulsi Kumari — Backend Software Engineer",
+    title: "Tulsi Kumari | Software Development Engineer",
     description:
       "Notes on backend engineering, transaction correctness, database performance, and distributed systems.",
   },

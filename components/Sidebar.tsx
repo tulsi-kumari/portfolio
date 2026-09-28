@@ -20,9 +20,8 @@ export default function Sidebar() {
             </Link>
             <div className="mt-1">
               <p className="text-xs md:text-sm font-medium text-accent">
-                Backend Software Engineer
+                Software Development Engineer
               </p>
-              <p className="text-xs md:text-sm text-muted mt-0.5">Texas Instruments</p>
             </div>
           </div>
         </div>

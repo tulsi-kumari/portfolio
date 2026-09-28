@@ -10,7 +10,7 @@ export default function HomePage() {
       {/* Intro Hero */}
       <div className="mb-10">
         <p className="text-base sm:text-lg text-ink/85 leading-relaxed max-w-2xl font-normal">
-          I'm a Backend Software Engineer at <span className="font-semibold text-ink">Texas Instruments</span> focusing on{" "}
+          I'm a Software Development Engineer focusing on{" "}
           <span className="font-medium text-ink">transaction correctness</span>,{" "}
           <span className="font-medium text-ink">database &amp; ORM performance engineering</span>, and{" "}
           <span className="font-medium text-ink">distributed systems</span>.
@@ -30,7 +30,7 @@ export default function HomePage() {
         </div>
 
         {posts.length === 0 && (
-          <p className="text-sm text-muted py-8 text-center">No posts yet &mdash; check back soon.</p>
+          <p className="text-sm text-muted py-8 text-center">No posts yet . Check back soon.</p>
         )}
         <div className="space-y-4">
           {posts.map((post) => (
@@ -47,7 +47,7 @@ export default function HomePage() {
           <div>
             <h3 className="text-[15px] font-bold text-ink mb-2">Raft in Go</h3>
             <p className="text-[15px] text-ink/80 leading-relaxed">
-              Leader election &rarr; log replication &rarr; persistence
+              Leader election, log replication, persistence
             </p>
           </div>
           <div>

@@ -18,7 +18,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const postUrl = `${siteUrl}/posts/${post.slug}`;
 
   return {
-    title: `${post.title} — Tulsi Kumari`,
+    title: `${post.title} | Tulsi Kumari`,
     description: post.excerpt,
     alternates: {
       canonical: postUrl,
@@ -57,7 +57,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
           href="/"
           className="text-xs text-muted hover:text-accent inline-flex items-center gap-1 transition-colors"
         >
-          &larr; Back to all writing
+          < Back to all writing
         </Link>
       </div>
 

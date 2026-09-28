@@ -13,7 +13,7 @@ export default function AuthorCard() {
             <h3 className="font-bold text-[15px] text-ink">Tulsi Kumari</h3>
             <span className="text-line">&middot;</span>
             <span className="text-[13px] text-muted font-medium">
-              Backend SDE @ Texas Instruments
+              Software Development Engineer
             </span>
           </div>
           <p className="text-[14px] text-ink/85 leading-relaxed mb-3">

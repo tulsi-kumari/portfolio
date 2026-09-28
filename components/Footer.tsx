@@ -4,7 +4,7 @@ export default function Footer() {
     <footer className="max-w-3xl mx-auto px-6 py-14 mt-10 border-t border-line">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted">
         <p>
-          &copy; {year} Tulsi Kumari &middot; Backend Software Engineer
+          &copy; {year} Tulsi Kumari &middot; Software Development Engineer
         </p>
         <div className="flex items-center gap-3">
           <a

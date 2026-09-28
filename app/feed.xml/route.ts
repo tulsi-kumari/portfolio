@@ -24,7 +24,7 @@ export async function GET() {
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tulsi Kumari — Backend Software Engineer</title>
+    <title>Tulsi Kumari | Software Development Engineer</title>
     <link>${siteUrl}</link>
     <description>Notes on backend engineering, transaction correctness, performance engineering, and distributed systems.</description>
     <language>en-us</language>

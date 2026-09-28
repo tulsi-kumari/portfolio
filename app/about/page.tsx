@@ -5,7 +5,7 @@ export default function AboutPage() {
 
       <div className="prose-post text-ink/90">
         <p>
-          I'm a Backend Software Engineer focused on transaction correctness,
+          I'm a Software Development Engineer focused on transaction correctness,
           performance engineering, and production reliability in Java and
           Spring Boot systems.
         </p>
@@ -20,7 +20,7 @@ export default function AboutPage() {
 
         <p>
           Outside of work, I'm building toward distributed systems and
-          larger-scale production work &mdash; currently implementing Raft
+          larger-scale production work | currently implementing Raft
           from the original paper, one component at a time, and thinking
           through how to design data models that keep LLM inference costs
           down without sacrificing quality, as part of a small AI-assisted
