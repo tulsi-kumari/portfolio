@@ -6,7 +6,7 @@ tags: ["Java", "Spring Boot", "Production"]
 status: "shipped"
 ---
 
-A backend platform I own froze for over an hour. Requests weren't erroring out — they were just hanging, which is a worse signal than a clean failure, because nothing in the logs screams at you. Here's how I traced it, and the pattern I now watch for by default.
+A backend platform I own froze for over an hour. Requests weren't erroring out; they were just hanging, which is a worse signal than a clean failure, because nothing in the logs screams at you. Here's how I traced it, and the pattern I now watch for by default.
 
 ## The symptom
 
@@ -14,9 +14,9 @@ The platform coordinates a relational database, a couple of external APIs, and a
 
 ## The trace
 
-The first real clue was in the connection pool metrics: active connections pinned at the pool's max, and none of them cycling back to idle. That's the signature of connections being held, not leaked — leaked connections show up as a slow climb over hours or days; this was an instant wall.
+The first real clue was in the connection pool metrics: active connections pinned at the pool's max, and none of them cycling back to idle. That's the signature of connections being held, not leaked; leaked connections show up as a slow climb over hours or days; this was an instant wall.
 
-Working backward from there, the pattern was: a `@Transactional` method that, partway through, made a call out to an external service over the wire. The transaction was still open — and holding its database connection — for the entire duration of that external call. Under normal latency, this is invisible. Under any slowdown on the external side (which is exactly what happened), every one of those in-flight requests sat there holding a connection hostage, and the pool ran out of connections for anyone else.
+Working backward from there, the pattern was: a `@Transactional` method that, partway through, made a call out to an external service over the wire. The transaction was still open; and holding its database connection; for the entire duration of that external call. Under normal latency, this is invisible. Under any slowdown on the external side (which is exactly what happened), every one of those in-flight requests sat there holding a connection hostage, and the pool ran out of connections for anyone else.
 
 ```text
 [ BEFORE: Connection Starvation under External Latency ]
@@ -42,7 +42,7 @@ public void processRecord(Record r) {
 }
 ```
 
-Nothing here looks wrong. The bug isn't in any single line — it's in the *scope* of the transaction. `@Transactional` doesn't know or care that you made a network call in the middle of it; it just keeps the connection checked out for as long as the method runs.
+Nothing here looks wrong. The bug isn't in any single line; it's in the *scope* of the transaction. `@Transactional` doesn't know or care that you made a network call in the middle of it; it just keeps the connection checked out for as long as the method runs.
 
 ## The fix
 
