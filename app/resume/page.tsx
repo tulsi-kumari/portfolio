@@ -157,7 +157,7 @@ export default function ResumePage() {
                     Software Development Engineer
                   </h3>
                   <p className="text-xs font-medium text-accent">
-                    Texas Instruments &middot; Bengaluru, India
+                    Bengaluru, India
                   </p>
                 </div>
                 <span className="text-xs text-muted shrink-0 font-mono">
@@ -200,7 +200,7 @@ export default function ResumePage() {
                     Software Development Engineer Intern
                   </h3>
                   <p className="text-xs font-medium text-accent">
-                    Texas Instruments &middot; Bengaluru, India
+                    Bengaluru, India
                   </p>
                 </div>
                 <span className="text-xs text-muted shrink-0 font-mono">
@@ -304,7 +304,7 @@ export default function ResumePage() {
             </h2>
             <ul className="list-disc list-outside ml-4 space-y-2 text-ink/85 text-xs">
               <li>
-                <span className="font-semibold text-ink">Rising Star of the Quarter</span> for end-to-end ownership and execution quality at Texas Instruments.
+                <span className="font-semibold text-ink">Rising Star of the Quarter</span> for end-to-end ownership and execution quality.
               </li>
               <li>
                 <span className="font-semibold text-ink">Silver Recognition, Top 10 finish</span> at AI Hackathon.

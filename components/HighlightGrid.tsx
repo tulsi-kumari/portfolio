@@ -3,27 +3,27 @@ export default function HighlightGrid() {
     {
       metric: "95%",
       title: "ORM & Batching Latency Cut",
-      context: "Reduced 45+ min workflows to ~2 min at Texas Instruments via JDBC batching, Persistable<T>, and correlated SQL updates.",
+      context: "Reduced 45+ min workflows to ~2 min via JDBC batching, Persistable<T>, and correlated SQL updates.",
       tag: "Performance",
     },
-    {
-      metric: "10K+",
-      title: "11-State Modular Monolith",
-      context: "Architected queue-less lifecycle orchestrator automating sales workflows across 10,000+ participants, saving ~$120K/yr.",
-      tag: "Production / Architecture",
-    },
+    // {
+    //   metric: "10K+",
+    //   title: "11-State Modular Monolith",
+    //   context: "Architected queue-less lifecycle orchestrator automating sales workflows across 10,000+ participants, saving ~$120K/yr.",
+    //   tag: "Production / Architecture",
+    // },
     {
       metric: "Raft",
       title: "Distributed Consensus in Go",
       context: "From-scratch Raft implementation in Go, currently focused on leader election, randomized election timeouts, heartbeats, and the path toward log replication.",
       tag: "Distributed Systems",
     },
-    {
-      metric: "~30s",
-      title: "Metadata Knowledge Graph",
-      context: "Indexed 16,000+ artifacts and 30,000+ dependency edges with PostgreSQL GIN reverse search, slashing dependency analysis from months to seconds.",
-      tag: "Graph & DB",
-    },
+    // {
+    //   metric: "~30s",
+    //   title: "Metadata Knowledge Graph",
+    //   context: "Indexed 16,000+ artifacts and 30,000+ dependency edges with PostgreSQL GIN reverse search, slashing dependency analysis from months to seconds.",
+    //   tag: "Graph & DB",
+    // },
   ];
 
   return (

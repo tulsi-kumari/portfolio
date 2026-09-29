@@ -1,16 +1,16 @@
 ---
-title: "Diagnosing a Production Freeze: Connection Pool Starvation Across Service Boundaries"
+title: "Connection Pool Starvation Across Service Boundaries"
 date: "2026-06-02"
 excerpt: "A one-hour production freeze, traced back to a transaction that outlived its own database connection."
 tags: ["Java", "Spring Boot", "Production"]
 status: "shipped"
 ---
 
-A backend platform I own froze for over an hour. Requests weren't erroring out; they were just hanging, which is a worse signal than a clean failure, because nothing in the logs screams at you. Here's how I traced it, and the pattern I now watch for by default.
+A platform froze for over an hour. Requests weren't erroring out; they were just hanging, which is a worse signal than a clean failure, because nothing in the logs screams at you. Here's how I traced it, and the pattern I now watch for by default.
 
 ## The symptom
 
-The platform coordinates a relational database, a couple of external APIs, and a data-virtualization layer, all within the same request in some code paths. Under load, new requests started queuing indefinitely. No exceptions. No obvious errors. Just requests that never came back.
+The platform coordinates a relational database, external APIs, and a data layer, all within the same request in some code paths. Under load, new requests started queuing indefinitely. No exceptions. No obvious errors. Just requests that never came back.
 
 ## The trace
 
