@@ -48,9 +48,9 @@ export default function AboutPage() {
               GitHub
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="/resume">Resume (Interactive &amp; PDF)</a>
-          </li>
+          </li> */}
           <li>
             <a href="/feed.xml" target="_blank">
               RSS Feed

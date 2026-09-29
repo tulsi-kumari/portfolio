@@ -41,7 +41,7 @@ export default function Sidebar() {
       <nav className="flex md:flex-col items-center md:items-start gap-6 md:gap-4 mt-6 md:mt-10 text-[13px] font-semibold pb-4 md:pb-0 overflow-x-auto w-full tracking-wide">
         <Link href="/" className="text-ink hover:text-accent transition-colors whitespace-nowrap shrink-0">Writing</Link>
         <Link href="/about" className="text-muted hover:text-ink transition-colors whitespace-nowrap shrink-0">About</Link>
-        <Link href="/resume" className="text-muted hover:text-ink transition-colors whitespace-nowrap shrink-0">Resume</Link>
+        {/* <Link href="/resume" className="text-muted hover:text-ink transition-colors whitespace-nowrap shrink-0">Resume</Link> */}
         <a href="/feed.xml" target="_blank" className="hidden md:flex text-muted hover:text-ink transition-colors items-center gap-1.5 md:mt-4 shrink-0">
           RSS Feed
         </a>
