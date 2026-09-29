@@ -57,7 +57,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
           href="/"
           className="text-xs text-muted hover:text-accent inline-flex items-center gap-1 transition-colors"
         >
-          < Back to all writing
+          &lt; Back to all writing
         </Link>
       </div>
 
